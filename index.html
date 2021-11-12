@@ -69,7 +69,7 @@
       count += 1;
       bpmValue.textContent = Math.ceil(60 * count / ((now - start) / 1000));
     });
-    const resetButton = document.querySelector('reset');
+    const resetButton = document.querySelector('.reset');
     resetButton.addEventListener('click', () => {
       count = 0;
       start = Date.now();
