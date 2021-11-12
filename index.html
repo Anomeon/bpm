@@ -77,10 +77,13 @@
     let start = null;
     button.addEventListener('click', () => {
       if (start === null) {
-        start = Date.now() - 1000;
+        start = Date.now();
       }
       const now = Date.now();
       count += 1;
+      if (start === now) {
+        return;
+      }
       bpmValue.textContent = Math.ceil(60 * count / ((now - start) / 1000));
     });
     const resetButton = document.querySelector('.reset');
