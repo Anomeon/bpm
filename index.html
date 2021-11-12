@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Helvetica, Arial, Times;
+      margin: 0;
+    }
+
+    .container {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr 100px 30vh;
+    }
+
+    .count {
+      width: 100%;
+      background-color: tomato;
+      border: none;
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .reset {
+      width: 100%;
+      background-color: #bbb;
+      border: none;
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .bpm {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bpm__label {
+      font-size: 20px;
+    }
+
+    .bpm__value {
+      font-size: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bpm">
+      <span class="bpm__label">BPM</span>
+      <span class="bpm__value">0</span>
+    </div>
+    <button class="reset">Reset</button>
+    <button class="count">Tap</button>
+  </div>
+  <script>
+    const button = document.querySelector('.count');
+    const bpmValue = document.querySelector('.bpm__value');
+    let count = 0;
+    let start = Date.now();
+    button.addEventListener('click', () => {
+      const now = Date.now();
+      count += 1;
+      bpmValue.textContent = Math.ceil(60 * count / ((now - start) / 1000));
+    });
+    const resetButton = document.querySelector('reset');
+    resetButton.addEventListener('click', () => {
+      count = 0;
+      start = Date.now();
+    });
+  </script>
+</body>
+</html>
